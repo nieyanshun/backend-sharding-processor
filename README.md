@@ -14,6 +14,14 @@ spring+jdbctemplate搭建，用于可分片场景作业批处理
 cpu核心数*3/4，我们机器是4核，因此我设为3，避免拉低服务器性能，后来发现，3线程while循环批处理，cpu10%都不到。
 
 8线程，数个小时处理完这批数据。
+
+另外，服务器jdk只有jcmd工具，这里记录下一些命令
+打印线程栈信息
+jcmd pid Thread.print
+
+ps H -eo user,pid,ppid,%cpu --sort=cpu%
+获取占用cpu最大的线程，将线程id转换为十六进制，在线程栈中nid即为相应线程id
+
 ```
 
 
